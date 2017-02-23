@@ -1,0 +1,16 @@
+{
+  "name": "webpack-sample2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "moment": "^2.17.1",
+    "webpack": "^2.2.1"
+  }
+}
