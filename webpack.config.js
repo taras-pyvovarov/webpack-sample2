@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
+  
   entry: {
     //Bundle with key 'app'
     app: ['./home.js', './app.js'],
@@ -13,8 +14,17 @@ module.exports = {
     //Bundle with key 'contact'
     contact: './contact.js',
   },
+
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
   },
+
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.js',
+      minChunks: 2,
+    }),
+  ],
 };
