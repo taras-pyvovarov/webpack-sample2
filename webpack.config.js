@@ -5,11 +5,14 @@ module.exports = {
   context: path.resolve(__dirname, './src'),
   
   entry: {
+    //Separate 'vendor' bundle for listed node modules
+    vendor: ['moment'],
+
     //Bundle with key 'app'
     app: ['./home.js', './app.js'],
 
     //Bundle with key 'vendor'
-    vendor: './vendor.js',
+    part1: './part1.js',
 
     //Bundle with key 'contact'
     contact: './contact.js',
@@ -21,10 +24,10 @@ module.exports = {
   },
 
   plugins: [
+    //Describe vendor bundle
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'commons.js',
-      minChunks: 2,
+      name: 'vendor',
+      filename: 'vendor.bundle.js'
     }),
   ],
 };
