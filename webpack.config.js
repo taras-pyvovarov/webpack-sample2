@@ -31,9 +31,9 @@ module.exports = {
       //CSS compilation rule
       {
         //For all css files...
-        test: /\.css$/,
+        test: /\.(sass|scss)$/,
         //Use css loader (handles css files in import) and then style loader (writes your styles to the <head>)
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
 
       //Babel js compilation rule
