@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
-  
+
   entry: {
     //Separate 'vendor' bundle for listed node modules
     vendor: ['moment'],
@@ -26,6 +26,26 @@ module.exports = {
     publicPath: '/assets',
   },
 
+  module: {
+    rules: [
+      //Babel js compilation rule
+      {
+        //For all js files...
+        test: /\.js$/,
+        //Except node_modules folder...
+        exclude: [/node_modules/],
+        use: [{
+          //Use babel leader...
+          loader: 'babel-loader',
+          //With options...
+          options: { presets: ['es2015'] }
+        }],
+      },
+
+      // Loaders for other file types can go here
+    ],
+  },
+
   devServer: {
     //This 'src' folder will be served in devserver to be available in localhost root
     contentBase: path.resolve(__dirname, './src'),
@@ -34,8 +54,8 @@ module.exports = {
   plugins: [
     //Describe vendor bundle
     new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.bundle.js'
-        }),
+      name: 'vendor',
+      filename: 'vendor.bundle.js'
+    }),
   ],
 };
