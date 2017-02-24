@@ -1,5 +1,7 @@
+//Dependencies described with NodeJS's require
 const path = require('path');
 const webpack = require('webpack');
+const extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -32,7 +34,7 @@ module.exports = {
       {
         //For all css files...
         test: /\.(sass|scss)$/,
-        //Use css loader (handles css files in import) and then style loader (writes your styles to the <head>)
+        //Use sass loader (compiles into css, then css loader (handles css files in import), and then style loader (writes your styles to the <head>)
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
 
